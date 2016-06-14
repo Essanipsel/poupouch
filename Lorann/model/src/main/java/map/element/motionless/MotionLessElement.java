@@ -4,6 +4,7 @@ import map.element.Element;
 import map.element.ISprite;
 import map.element.Permeability;
 
+
 public abstract class MotionLessElement extends Element {
 	private final char fileSymbol;
 
