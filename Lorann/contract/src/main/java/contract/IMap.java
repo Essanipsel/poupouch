@@ -1,4 +1,4 @@
-package map;
+package contract;
 
 import java.util.ArrayList;
 
@@ -10,11 +10,11 @@ public interface IMap {
 
 	public MotionlessElement getElements(int x, int y);
 
-	public Hero getHero();
+	public Lorann getLorann();
 
 	public void addMobile(Mobile mobile, int x, int y);
 
-	public void addMobile(Hero hero, int x, int y);
+	public void addMobile(Lorann lorann, int x, int y);
 
 	public void setMobileHasChanged();
 
@@ -27,5 +27,7 @@ public interface IMap {
 	public int getNumMap();
 	
 	public int setNumMap(int id);
+	
+	public void setLorann(Lorann lorann, int x, int y);
 	
 }
