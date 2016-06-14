@@ -24,11 +24,11 @@ public abstract class Element implements ISquare {
 	}
 
 	protected IMap getMap() {
-		return this.nettleWorld;
+		return this.map;
 	}
 
-	public void setMap(final INettleWorld nettleWorld) {
-		this.nettleWorld = nettleWorld;
+	public void setMap(final IMap map) {
+		this.map = map;
 	}
 
 	@Override
@@ -42,5 +42,10 @@ public abstract class Element implements ISquare {
 
 	private void setSprite(final ISprite sprite) {
 		this.sprite = sprite;
+	}
+
+	public ActionOnHeroes getActionOnHeroes() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -30,4 +30,6 @@ public interface IMap {
 	
 	public void setLorann(Lorann lorann, int x, int y);
 	
+	private void loadfile()
+	
 }

@@ -1,5 +1,7 @@
 package map.element;
 
-public interface ISprite {
+import java.awt.Image;
 
+public interface ISprite {
+	Image getImage();
 }
