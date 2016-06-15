@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import contract.IMap;
+import map.element.mobile.Lorann;
+import map.element.mobile.Mobile;
 import map.element.motionless.MotionLessElement;
 
 

@@ -45,7 +45,7 @@ public abstract class Mobile extends Element implements IPawn {
 		return this.position;
 	}
 
-	public void setNettleWorld(final IMap map, final int x, final int y) {
+	public void setMap(final IMap map, final int x, final int y) {
 		super.setMap(map);
 		this.setX(x);
 		this.setY(y);
@@ -78,4 +78,5 @@ public abstract class Mobile extends Element implements IPawn {
 			this.setX(this.getX() + 1);
 		}
 	}
+	
 }
