@@ -3,40 +3,61 @@ package map.element;
 import java.awt.Image;
 
 import aedt.showboard.ISquare;
+import contract.ActionOnHeroes;
 import contract.IMap;
-import map.element.interaction.ActionOnHeroes;
-import map.element.interaction.IDoActionOnHeroes;
 
-public abstract class Element implements ISquare {
-	private ISprite sprite;
-	private Permeability permeability;
-	private ActionOnHeroes actionOnHeroes;
-	private IMap map;
+public abstract class Element implements ISquare{
 	
+	private ISprite				sprite;
+	private Permeability	permeability;
+	private IMap	map;
+	
+	private ActionOnHeroes action;
+	private ActionOnHeroes action2;
+	
+
 	public Element(final ISprite sprite, final Permeability permeability) {
 		this.setSprite(sprite);
 		this.setPermeability(permeability);
 	}
-	
-	public Element(final ISprite sprite, final ActionOnHeroes actionOnHeroes) {
-		this.setSprite(sprite);
-		this.setActionOnHeroes(actionOnHeroes);
-	}
-	
-	public Element(final ISprite sprite, final Permeability permeability, final ActionOnHeroes actionOnHeroes) {
+	public Element(final ISprite sprite,final Permeability permeability,final ActionOnHeroes action) {
 		this.setSprite(sprite);
 		this.setPermeability(permeability);
-		this.setActionOnHeroes(actionOnHeroes);
+		
+		this.setAction(action)  ;
 	}
-	
-	public ActionOnHeroes getActionOnHeroes() {
-		return this.actionOnHeroes;
+	public Element(final ISprite sprite,final Permeability permeability,final ActionOnHeroes action,final ActionOnHeroes action2) {
+		this.setSprite(sprite);
+		this.setPermeability(permeability);
+		
+		this.setAction(action);
+		this.setAction2(action2);
+	}
+	public ActionOnHeroes getAction()
+	{
+		return this.action;
+	}
+	public ActionOnHeroes getAction2()
+	{
+		return this.action2;
+	}
+	public void setAction(final ActionOnHeroes action)
+	{
+		this.action = action;
+	}
+	public void setAction2(final ActionOnHeroes action)
+	{
+		this.action2 = action;
 	}
 
-	private void setActionOnHeroes(final ActionOnHeroes actionOnHeroes) {
-		this.actionOnHeroes = actionOnHeroes;
+	public ISprite getSprite() {
+		return this.sprite;
 	}
-	
+
+	private void setSprite(final ISprite sprite) {
+		this.sprite = sprite;
+	}
+
 	public Permeability getPermeability() {
 		return this.permeability;
 	}
@@ -57,13 +78,5 @@ public abstract class Element implements ISquare {
 	public Image getImage() {
 		return this.getSprite().getImage();
 	}
-	
-	public ISprite getSprite() {
-		return this.sprite;
-	}
 
-	private void setSprite(final ISprite sprite) {
-		this.sprite = sprite;
-	}
-	}
 }

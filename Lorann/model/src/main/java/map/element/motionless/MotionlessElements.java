@@ -1,16 +1,17 @@
 package map.element.motionless;
 
+
 public abstract class MotionlessElements {
-	public static final MotionLessElement BONE_ANGLE = new BoneAngle();
-	public static final MotionLessElement BONE_V = new BoneV();
-	public static final MotionLessElement LAND = new land();
-	public static final MotionLessElement BONE_H = new BoneH();
+	public static final MotionlessElement	BONE_ANGLE									= new Bone_Angle();
+	public static final MotionlessElement	BONE_V							= new Bone_V();
+	public static final MotionlessElement	LAND									= new Land();
+	public static final MotionlessElement	BONE_H							= new Bone_H();
+	
 
+	private static MotionlessElement			motionlessElements[]	= { LAND, BONE_H,BONE_V,BONE_ANGLE };
 
-	private static MotionLessElement motionlessElements[] = { LAND, BONE_H,BONE_V,BONE_ANGLE };
-
-	public static MotionLessElement getFromFileSymbol(final char fileSymbol) {
-		for (final MotionLessElement motionlessElement : motionlessElements) {
+	public static MotionlessElement getFromFileSymbol(final char fileSymbol) {
+		for (final MotionlessElement motionlessElement : motionlessElements) {
 			if (motionlessElement.getFileSymbol() == fileSymbol) {
 				return motionlessElement;
 			}

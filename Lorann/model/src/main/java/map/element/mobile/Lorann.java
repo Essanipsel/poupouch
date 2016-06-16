@@ -1,66 +1,69 @@
 package map.element.mobile;
 
 import java.awt.Point;
+
 import map.element.Sprite;
 
-public class Lorann extends Mobile{
+public class Lorann extends Mobile {
+
 	
 	private final Point lastPosition;
-	private Orientation orientation;
+	private Orientation Orientation;
+	
 
 	public Lorann() {
-		super(new Sprite("☺!", "lorann_u.png"));
+		super(new Sprite("☺!", "lorann.png"));
 		this.lastPosition = new Point();
 		this.lastPosition.setLocation(this.getPosition().x, this.getPosition().y);
 	}
-	
-	
 
 	private void saveLastPosition() {
 		if ((this.lastPosition.getX() != this.getPosition().getX()) || (this.lastPosition.getY() != this.getPosition().getY())) {
+			
+			
 			this.lastPosition.setLocation(this.getPosition().x, this.getPosition().y);
 		}
 	}
 
 	@Override
-	public void moveUp() {
+	public void moveUp() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		this.saveLastPosition();
 		super.moveUp();
-		this.setOrientation(Orientation.NORD);
+		this.setOriention(map.element.mobile.Orientation.NORD);
+		
 	}
 
 	@Override
-	public void moveLeft() {
+	public void moveLeft() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		this.saveLastPosition();
 		super.moveLeft();
-		this.setOrientation(Orientation.OUEST);
+		
 	}
 
 	@Override
-	public void moveDown() {
+	public void moveDown() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		this.saveLastPosition();
 		super.moveDown();
-		this.setOrientation(Orientation.SUD);
 	}
 
 	@Override
-	public void moveRight() {
+	public void moveRight() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		this.saveLastPosition();
 		super.moveRight();
-		this.setOrientation(Orientation.EST);
 	}
 
-	public void moveBack() {
+	public void moveBack() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		this.setX(this.lastPosition.x);
 		this.setY(this.lastPosition.y);
 	}
-	
-	public void setOrientation(Orientation orientation){
-		this.orientation = orientation;
+	public Orientation getOrientation()
+	{
+		return this.Orientation;
+		
 	}
-	
-	public Orientation getOrientation(){
-		return orientation;
+	public void setOriention(Orientation orientation)
+	{
+		this.Orientation = orientation;
+		
 	}
-
 }

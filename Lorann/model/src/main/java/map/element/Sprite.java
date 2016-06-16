@@ -7,7 +7,6 @@ import java.io.StringWriter;
 
 import javax.imageio.ImageIO;
 
-
 public class Sprite extends StringWriter implements ISprite {
 	private Image image;
 
@@ -33,5 +32,5 @@ public class Sprite extends StringWriter implements ISprite {
 	public Image getImage() {
 		return this.image;
 	}
-
 }
+

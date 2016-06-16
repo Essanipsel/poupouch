@@ -5,7 +5,7 @@ package model;
  *
  * @author Jean-Aymeric Diet
  */
-public class HelloWorld extends Entity {
+class HelloWorld extends Entity {
 
 	/** The id. */
 	private int			id;

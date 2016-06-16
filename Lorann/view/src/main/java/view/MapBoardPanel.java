@@ -1,33 +1,24 @@
 package view;
 
-import java.awt.Dimension; 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
+
+import aedt.showboard.BoardPanel;
 import aedt.showboard.IPawn;
 import aedt.showboard.ISquare;
 
+public class MapBoardPanel extends BoardPanel {
 
-/**
- * package view.
- * MapBoardPanel.java
- *
- * @author Martial
- *
- */
-public class MapBoardPanel extends aedt.showboard.BoardPanel 
-{
-	private static final long serialVersionUID = 2361367180781892671L;
-	/**
-	 * Instantiates a new MapBoardPanel.
-	 *
-	 * @param dimension
-	 * @param squares
-	 * @param pawns
-	 * @param center
-	 * @param zoom
-	 */
-	public MapBoardPanel(final Dimension dimension, final ISquare[][] squares, final ArrayList<? extends IPawn> pawns, final Point center, final int zoom) 
-	{
+	public MapBoardPanel(Dimension dimension, ISquare[][] squares, ArrayList<? extends IPawn> pawns, Point center,
+			int zoom) {
 		super(dimension, squares, pawns, center, zoom);
+		// TODO Auto-generated constructor stub
 	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }

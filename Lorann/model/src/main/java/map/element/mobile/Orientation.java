@@ -1,5 +1,5 @@
 package map.element.mobile;
 
 public enum Orientation {
-	NORD, SUD, EST, OUEST
+	NORD,SUD,EST,OUEST;
 }

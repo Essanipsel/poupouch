@@ -22,7 +22,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>main.Main</mainClass>
+                  <mainClass>com.main.Main</mainClass>
                 </transformer>
               </transformers>
             </configuration>
