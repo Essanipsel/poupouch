@@ -4,11 +4,13 @@ import java.awt.Image;
 
 import aedt.showboard.ISquare;
 import contract.IMap;
+import map.element.interaction.ActionOnHeroes;
 import map.element.interaction.IDoActionOnHeroes;
 
 public abstract class Element implements ISquare {
 	private ISprite sprite;
 	private Permeability permeability;
+	private ActionOnHeroes actionOnHeroes;
 	private IMap map;
 	
 	public Element(final ISprite sprite, final Permeability permeability) {
@@ -16,17 +18,23 @@ public abstract class Element implements ISquare {
 		this.setPermeability(permeability);
 	}
 	
-	public Element(final ISprite sprite, final IDoActionOnHeroes iDoActionOnHeroes) {
+	public Element(final ISprite sprite, final ActionOnHeroes actionOnHeroes) {
 		this.setSprite(sprite);
-		this.setPermeability(permeability);
+		this.setActionOnHeroes(actionOnHeroes);
 	}
 	
-	public IDoActionOnHeroes getiDoActionOnHeroes() {
-		return this.permeability;
+	public Element(final ISprite sprite, final Permeability permeability, final ActionOnHeroes actionOnHeroes) {
+		this.setSprite(sprite);
+		this.setPermeability(permeability);
+		this.setActionOnHeroes(actionOnHeroes);
+	}
+	
+	public ActionOnHeroes getActionOnHeroes() {
+		return this.actionOnHeroes;
 	}
 
-	private void setPermeability(final Permeability permeability) {
-		this.permeability = permeability;
+	private void setActionOnHeroes(final ActionOnHeroes actionOnHeroes) {
+		this.actionOnHeroes = actionOnHeroes;
 	}
 	
 	public Permeability getPermeability() {
@@ -57,9 +65,5 @@ public abstract class Element implements ISquare {
 	private void setSprite(final ISprite sprite) {
 		this.sprite = sprite;
 	}
-
-	public ActionOnHeroes getActionOnHeroes() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }
