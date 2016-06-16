@@ -10,7 +10,8 @@ import map.element.interaction.IDoActionOnHeroes;
 public abstract class Element implements ISquare {
 	private ISprite sprite;
 	private Permeability permeability;
-	private ActionOnHeroes actionOnHeroes;
+	private ActionOnHeroes action1;
+	private ActionOnHeroes action2;
 	private IMap map;
 	
 	public Element(final ISprite sprite, final Permeability permeability) {
@@ -18,23 +19,38 @@ public abstract class Element implements ISquare {
 		this.setPermeability(permeability);
 	}
 	
-	public Element(final ISprite sprite, final ActionOnHeroes actionOnHeroes) {
+	public Element(final ISprite sprite, final ActionOnHeroes action1) {
 		this.setSprite(sprite);
-		this.setActionOnHeroes(actionOnHeroes);
+		this.setAction1(action1);
 	}
 	
-	public Element(final ISprite sprite, final Permeability permeability, final ActionOnHeroes actionOnHeroes) {
+	public Element(final ISprite sprite, final Permeability permeability, final ActionOnHeroes action1) {
 		this.setSprite(sprite);
 		this.setPermeability(permeability);
-		this.setActionOnHeroes(actionOnHeroes);
+		this.setAction1(action1);
 	}
 	
-	public ActionOnHeroes getActionOnHeroes() {
-		return this.actionOnHeroes;
+	public Element(final ISprite sprite, final Permeability permeability, final ActionOnHeroes action1, final ActionOnHeroes action2) {
+		this.setSprite(sprite);
+		this.setPermeability(permeability);
+		this.setAction1(action1);
+		this.setAction1(action2);
+	}
+	
+	public ActionOnHeroes getAction1() {
+		return this.action1;
 	}
 
-	private void setActionOnHeroes(final ActionOnHeroes actionOnHeroes) {
-		this.actionOnHeroes = actionOnHeroes;
+	private void setAction1(final ActionOnHeroes action1) {
+		this.action1 = action1;
+	}
+	
+	public ActionOnHeroes getAction2() {
+		return this.action2;
+	}
+
+	private void setAction2(final ActionOnHeroes action2) {
+		this.action2 = action2;
 	}
 	
 	public Permeability getPermeability() {
