@@ -23,11 +23,6 @@
   		<artifactId>controller</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
-  	<dependency>
-  		<groupId>jpublankproject</groupId>
-  		<artifactId>contract</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
   </dependencies>
 	<build>
 		<plugins>

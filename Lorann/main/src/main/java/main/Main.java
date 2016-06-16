@@ -1,28 +1,27 @@
 package main;
 
-
-
-
-import java.io.IOException;
-
-import controller.MapInit;
-
-/*import controller.MapInit;
+import controller.Controller;
 import model.Model;
+import view.View;
 
 /**
  * The Class Main.
  *
- * @author BIBI
+ * @author Jean-Aymeric Diet
  */
 public abstract class Main {
 
-	//private static MapInit map;
-
-
-	
-	public static void main(final String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
-		MapInit map = new MapInit();
-		System.out.println("coucou");
+	/**
+	 * The main method.
+	 *
+	 * @param args
+	 *          the arguments
+	 */
+	public static void main(final String[] args) {
+		final Model model = new Model();
+		final View view = new View(model);
+		final Controller controller = new Controller(view, model);
+		view.setController(controller);
+		controller.control();
 	}
 }
