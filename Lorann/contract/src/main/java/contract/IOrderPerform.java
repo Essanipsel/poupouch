@@ -12,6 +12,9 @@ public interface IOrderPerform {
 	 *
 	 * @param controllerOrder
 	 *          the controller order
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
+	 * @throws ClassNotFoundException 
 	 */
-	public void orderPerform(UserMode userMode);
+	public void orderPerform(UserMode userMode) throws ClassNotFoundException, InstantiationException, IllegalAccessException;
 }

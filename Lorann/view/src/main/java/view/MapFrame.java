@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 import contract.IMap;
+import contract.IMapFrame;
 import contract.IOrderPerform;
 
 
@@ -73,7 +74,12 @@ public class MapFrame extends JFrame implements KeyListener, IMapFrame {
 
 	@Override
 	public void keyPressed(final KeyEvent keyEvent) {
-		this.getNettlePlay().orderPerform(MapView.keyCodeToUserOrder(keyEvent.getKeyCode()));
+		try {
+			this.getNettlePlay().orderPerform(MapView.keyCodeToUserOrder(keyEvent.getKeyCode()));
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -82,6 +88,12 @@ public class MapFrame extends JFrame implements KeyListener, IMapFrame {
 
 	@Override
 	public void keyTyped(final KeyEvent arg0) {
+	}
+
+	@Override
+	public void displayMessage(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

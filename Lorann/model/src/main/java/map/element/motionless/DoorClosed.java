@@ -9,11 +9,17 @@ import map.element.interactions.Interactions;
 public class DoorClosed extends MotionlessElement{
 
 	public DoorClosed(ISprite sprite, Permeability permeability, char fileSymbol, ActionOnHeroes action) {
-		super(new Sprite("()", "doorclosed.jpg"), Permeability.PENETRABLE, 'C', ActionOnHeroes.PICKUP);
+		super(new Sprite("()", "doorclosed.jpg"), Permeability.PENETRABLE, 'C');
 		
 		
 		
 		
+	}
+
+	@Override
+	public contract.ActionOnHeroes getActionOnHeroes() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

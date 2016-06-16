@@ -9,8 +9,14 @@ import map.element.interactions.Interactions;
 public class DoorOpen extends MotionlessElement {
 
 	public DoorOpen(ISprite sprite, Permeability permeability, char fileSymbol, ActionOnHeroes action) {
-		super(new Sprite("éé", "dooropen.jpg"), Permeability.PENETRABLE, 'O',ActionOnHeroes.PICKUP);
+		super(new Sprite("éé", "dooropen.jpg"), Permeability.PENETRABLE, 'O');
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public contract.ActionOnHeroes getActionOnHeroes() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

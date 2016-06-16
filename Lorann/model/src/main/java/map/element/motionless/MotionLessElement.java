@@ -1,11 +1,12 @@
 package map.element.motionless;
 
 import contract.ActionOnHeroes;
+import contract.IDoActionOnHeroes;
 import map.element.Element;
 import map.element.ISprite;
 import map.element.Permeability;
 
-public abstract class MotionlessElement extends Element  {
+public abstract class MotionlessElement extends Element implements IDoActionOnHeroes  {
 	private final char fileSymbol;
 
 	public MotionlessElement(final ISprite sprite, final Permeability permeability, final char fileSymbol) {

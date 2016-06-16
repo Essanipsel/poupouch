@@ -43,7 +43,7 @@ public class MapPlay implements IOrderPerform {
 		return this.mapFrame;
 	}
 	
-	public IMapFrame setMapFrame (IMapFrame mapFrame){
+	public void setMapFrame (IMapFrame mapFrame){
 		this.mapFrame = mapFrame;
 	}
 	
@@ -64,19 +64,19 @@ public class MapPlay implements IOrderPerform {
 	}
 	
 	public void resolveEnterUp() throws IOException {
-		this.setNettleMeeting(new NettleWorld("monastery.txt"));
-		this.resolveWorldAnswer();
+		
 	}
 	
 	public void resolveEnterDown() throws IOException {
-		this.setNettleMeeting(new NettleWorld("monastery.txt"));
-		this.resolveWorldAnswer();
+		
 	}
 	
-	public void resolvePickUp
+	public void resolvePickUp(){
+		
+	}
 	
 	public void resolveWorldAnswer() throws IOException {
-		this.getMapMeeting().addMobile(new Hero(), 0, 0);
+		this.getMapMeeting().addMobile(new Lorann(), 0, 0);
 		this.getMapFrame().setMeeting(this.getMapMeeting());
 		this.setPlayMode(IMapFrame.VIEW_MODE_MEETING);
 	}
@@ -95,12 +95,8 @@ public class MapPlay implements IOrderPerform {
 				this.resolveEnterUp();
 				break;
 			case PICKUP:
-				mapFrame.displayMessage("You enter a town.");
-				this.resolveEnterTown();
 				break;
 			case NOENTER :
-				mapFrame.displayMessage("You enter a monastery.");
-				this.resolveEnterMonastery();
 				break;
 			case EXIT:
 				mapFrame.displayMessage("You go down one floor");
@@ -122,7 +118,7 @@ public class MapPlay implements IOrderPerform {
 	
 
 	
-	public void orderPerform(final UserMode userMode) {
+	public void orderPerform(final UserMode userMode) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		switch (userMode) {
 		case UP:
 			this.getActualMap().getLorann().moveUp();
