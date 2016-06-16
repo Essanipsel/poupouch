@@ -4,6 +4,7 @@ import java.awt.Image;
 
 import aedt.showboard.ISquare;
 import contract.IMap;
+import map.element.interaction.IDoActionOnHeroes;
 
 public abstract class Element implements ISquare {
 	private ISprite sprite;
@@ -13,6 +14,19 @@ public abstract class Element implements ISquare {
 	public Element(final ISprite sprite, final Permeability permeability) {
 		this.setSprite(sprite);
 		this.setPermeability(permeability);
+	}
+	
+	public Element(final ISprite sprite, final IDoActionOnHeroes iDoActionOnHeroes) {
+		this.setSprite(sprite);
+		this.setPermeability(permeability);
+	}
+	
+	public IDoActionOnHeroes getiDoActionOnHeroes() {
+		return this.permeability;
+	}
+
+	private void setPermeability(final Permeability permeability) {
+		this.permeability = permeability;
 	}
 	
 	public Permeability getPermeability() {

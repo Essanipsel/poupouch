@@ -1,5 +1,10 @@
 package map.element.interaction;
 
-public class DoorOpen {
+import map.element.Sprite;
+
+public class DoorOpen extends Interaction {
+	public DoorOpen() {
+		super(new Sprite("┌┐", "door.jpg"), ActionOnHeroes.ENTER, 'd');
+	}
 
 }
