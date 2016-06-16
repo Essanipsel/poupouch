@@ -18,11 +18,6 @@ public abstract class MotionLessElement extends Element {
 		super(sprite, actionOnHeroes);
 		this.fileSymbol = fileSymbol;
 	}
-	
-	public MotionLessElement(final ISprite sprite, final Permeability permeability, final ActionOnHeroes actionOnHeroes, final char fileSymbol) {
-		super(sprite, permeability, actionOnHeroes);
-		this.fileSymbol = fileSymbol;
-	}
 
 	public char getFileSymbol() {
 		return this.fileSymbol;
