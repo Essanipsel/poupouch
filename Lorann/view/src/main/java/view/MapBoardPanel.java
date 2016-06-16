@@ -26,7 +26,7 @@ public class MapBoardPanel extends aedt.showboard.BoardPanel
 	 * @param center
 	 * @param zoom
 	 */
-	public MapBoardPanel(final Dimension dimension, final ISquare[][] squares, final ArrayList<?> pawns, final Point center, final int zoom) 
+	public MapBoardPanel(final Dimension dimension, final ISquare[][] squares, final ArrayList<? extends IPawn> pawns, final Point center, final int zoom) 
 	{
 		super(dimension, squares, pawns, center, zoom);
 	}

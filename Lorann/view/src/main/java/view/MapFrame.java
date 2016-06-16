@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import controller.IOrderPerformed;
 import model.Map;
+import contract.IMap;
 
 
 /**
@@ -39,7 +40,7 @@ private final MapCardView		mapCardView;
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.mapPlay = mapPlay;
-		this.mapPanel = new NettleBoardPanel(new Dimension(Map.getWidth(), Map.getHeight()), Map.getElements(), Map.getMobiles(),
+		this.mapPanel = new MapBoardPanel(new Dimension(Map.getWidth(), Map.getHeight()), Map.getElements(), Map.getMobiles(),
 				Map.getHero().getPosition(), MapMove.MAP_ZOOM);
 		this.setResizable(false);
 		Map.addObserver(this.mapPanel);
@@ -80,7 +81,7 @@ private final MapCardView		mapCardView;
 			this.mapCardView.removeLayoutComponent(this.meetingPanel);
 		}
 		
-		this.meetingPanel = new NettleBoardPanel(new Dimension(Map.getWidth(), Map.getHeight()), Map.getElements(),
+		this.meetingPanel = new MapBoardPanel(new Dimension(Map.getWidth(), Map.getHeight()), Map.getElements(),
 				Map.getMobiles(),MapMove.MAP_ZOOM);
 		
 		Map.addObserver(this.meetingPanel);
