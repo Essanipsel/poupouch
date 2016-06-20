@@ -1,4 +1,4 @@
-package map;
+package controller;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,19 +8,28 @@ import java.io.IOException;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
+import contract.IMapFrame;
+import contract.IMapPlay;
+import contract.IMapWorld;
+import contract.IOrderPerformed;
+import map.MapWorld;
+import map.Orientation;
+
 import map.element.Sprite;
 import map.element.mobile.Fireball;
 import map.element.mobile.Lorann;
 import map.element.mobile.MonsterFour;
 import map.element.motionless.Energy;
 import map.element.motionless.IDoActionOnHeroes;
+import view.MapFrame;
 import map.element.motionless.*;
+import map.element.mobile.*;
 
 
 
-public class MapPlay implements IOrderPerformed{
-	private  MapFrame mapFrame;
-		private MapWorld mapWorld;
+public class MapPlay implements contract.IOrderPerformed,IMapPlay{
+	 public  IMapFrame mapFrame;
+		private IMapWorld mapWorld;
 		private int calcul_level = 1;
 		private int score = 0;
 		int Random;
@@ -41,15 +50,17 @@ public class MapPlay implements IOrderPerformed{
 			this.mapWorld.addMobile(new MonsterFour(), 5, 4);
 		    this.timer = createTimer (this);
 		    this.startTimer();
-		    this.timer  = this.createTimerForKill(this);
+		    this.timerKill  = this.createTimerForKill(this);
 		    this.startTimerForKill();
 			
 		
 		}
+		
 		public void startTimer(){
 			this.timer.start();
 		}
-		private Timer createTimer (MapPlay mapPlay){
+		
+		public Timer createTimer (final MapPlay mapPlay){
 		    ActionListener action = new ActionListener()
 		      {
 		    	
@@ -64,8 +75,8 @@ public class MapPlay implements IOrderPerformed{
 					}
 		        }
 		        private void timePerform() throws IOException {
-					
-		        	int xLorann = mapWorld.getLorann().getX();
+					System.out.println("gros poupouch");
+					int xLorann = mapWorld.getLorann().getX();
 				    int yLorann = mapWorld.getLorann().getY();
 				    int xMonsterFour = mapWorld.getMonsterFour().getX();
 				    int yMonsterFour = mapWorld.getMonsterFour().getY();
@@ -82,7 +93,6 @@ public class MapPlay implements IOrderPerformed{
 				    	if (yMonsterFour < yLorann){
 				    		mapWorld.getMonsterFour().moveDown();
 				    	}
-					 
 					if(mapPlay.getActuelMapWorld().getMonsterFour().getX() == mapPlay.getActuelMapWorld().getLorann().getX()&&mapPlay.getActuelMapWorld().getMonsterFour().getY() == mapPlay.getActuelMapWorld().getLorann().getY() )
 					{
 						mapPlay.mapFrame.showMessage("Vous êtes mort fdp");
@@ -92,11 +102,12 @@ public class MapPlay implements IOrderPerformed{
 		      };
 		    return new Timer(500, action);
 		  }
-		
+		@Override
 		public void startTimerForKill(){
 			this.timer.start();
 		}
-		private Timer createTimerForKill (MapPlay mapPlay){
+		@Override
+		public Timer createTimerForKill (final MapPlay mapPlay){
 		    ActionListener action = new ActionListener()
 		      {
 		        public void actionPerformed (ActionEvent event)
@@ -119,24 +130,27 @@ public class MapPlay implements IOrderPerformed{
 		      };
 		    return new Timer(1, action);
 		  }
-		
-		public MapWorld getMapWorld()
+		@Override
+		public IMapWorld getMapWorld()
 		{
 			return this.mapWorld;
 			
 		}
-		private MapFrame getMapFrame() {
+		@Override
+		public IMapFrame getMapFrame() {
 			return this.mapFrame;
 		}
-		public void setMapFrame(final MapFrame mapFrame) {
+		@Override
+		public void setMapFrame(final IMapFrame mapFrame) {
 			this.mapFrame = mapFrame;
 		}
-		private MapWorld getActuelMapWorld() {
+		@Override
+		public IMapWorld getActuelMapWorld() {
 			
 			return this.getMapWorld();
 		}
-		
-		public void orderPerform(final UserOrder userOrder) throws IOException {
+		@Override
+		public void orderPerform(final contract.UserOrder userOrder) throws IOException {
 				
 				switch (userOrder) {
 					case UP:
@@ -188,8 +202,8 @@ public class MapPlay implements IOrderPerformed{
 			}
 				this.getWorldAnswer();
 		}
-		
-		private void getWorldAnswer() throws IOException {
+		@Override
+		public void getWorldAnswer() throws IOException {
 			final IDoActionOnHeroes element = this.getActuelMapWorld().getElements(this.getActuelMapWorld().getLorann().getX(),
 					this.getActuelMapWorld().getLorann().getY());
 
@@ -236,8 +250,8 @@ public class MapPlay implements IOrderPerformed{
 					break;
 			}
 		}
-		
-		private void resolveUp() throws IOException {
+		@Override
+		public void resolveUp() throws IOException {
 			this.calcul_level = this.calcul_level+1;
 			
 			this.setMapWorld(new MapWorld(this.calcul_level));
@@ -246,7 +260,8 @@ public class MapPlay implements IOrderPerformed{
 			
 			this.resolveWorldAnswer();
 		}
-		private void resolveExit() throws IOException {
+		@Override
+		public void resolveExit() throws IOException {
 			this.calcul_level = this.calcul_level-1;
 			
 			this.setMapWorld(new MapWorld(this.calcul_level));
@@ -255,13 +270,13 @@ public class MapPlay implements IOrderPerformed{
 			
 			this.resolveWorldAnswer();
 		}
-		
-		private void resolvePickUpFireball() throws IOException {
+		@Override
+		public void resolvePickUpFireball() throws IOException {
 			this.mapWorld.addElement(new Land(), this.mapWorld.getFireball().getX(), this.mapWorld.getFireball().getY());
 			this.resolveWorldAnswer();
 		}
-		
-		private void resolvePickUpEnergy() throws IOException {
+		@Override
+		public void resolvePickUpEnergy() throws IOException {
 			
 			
 			this.mapWorld.addElement(new Land(), this.mapWorld.getPointEnergyX(), this.mapWorld.getPointEnergyY());
@@ -271,7 +286,8 @@ public class MapPlay implements IOrderPerformed{
 			
 			
 		}
-		private void resolvePickUpTreasure() throws IOException {
+		@Override
+		public void resolvePickUpTreasure() throws IOException {
 			
 			
 			this.mapWorld.addElement(new Land(), this.mapWorld.getPointTreasureX(), this.mapWorld.getPointTreasureY());
@@ -281,7 +297,8 @@ public class MapPlay implements IOrderPerformed{
 			
 			
 		}
-		private void resolveWorldAnswer() throws IOException {
+		@Override
+		public void resolveWorldAnswer() throws IOException {
 			
 			this.getMapWorld().addMobile(new Lorann(Orientation.ND), this.getActuelMapWorld().getPointSpawnLorannX(), this.getActuelMapWorld().getPointSpawnLorannY());
 			this.getMapWorld().addElement(new Energy(), this.getActuelMapWorld().getPointEnergyX(), this.getActuelMapWorld().getPointEnergyY());
@@ -294,15 +311,21 @@ public class MapPlay implements IOrderPerformed{
 			this.getMapFrame();
 			
 		}
-		
-		private void setMapWorld(final MapWorld map) {
-			this.mapWorld= map;
+
+		@Override
+		public void setMapWorld(IMapWorld map) {
+			this.mapWorld = map;
+			
 		}
+
 		@Override
 		public int getScore() {
 			// TODO Auto-generated method stub
 			return this.score;
 		}
+
+		
+		
 }
 
 
