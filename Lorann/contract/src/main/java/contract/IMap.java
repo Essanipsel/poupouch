@@ -1,6 +1,12 @@
 package contract;
 
 import java.util.ArrayList;
+import java.util.Observer;
+
+import map.element.Element;
+import map.element.mobile.Lorann;
+import map.element.mobile.Mobile;
+import map.element.motionless.MotionLessElement;
 
 public interface IMap {
 
@@ -8,7 +14,7 @@ public interface IMap {
 
 	public int getHeight();
 
-	public MotionlessElement getElements(int x, int y);
+	public MotionLessElement getElements(int x, int y);
 
 	public Lorann getLorann();
 
@@ -29,5 +35,7 @@ public interface IMap {
 	public int setNumMap(int id);
 	
 	public void setLorann(Lorann lorann, int x, int y);
+	
+	private void loadfile()
 	
 }

@@ -7,12 +7,19 @@ import java.util.Observable;
  *
  * @author Jean-Aymeric Diet
  */
+/**
+ * @author Martial
+ *
+ */
 public interface IModel {
 
 	/**
 	 * Gets the message.
 	 *
 	 * @return the message
+	 */
+	/**
+	 * @return
 	 */
 	String getMessage();
 
@@ -28,6 +35,9 @@ public interface IModel {
 	 * Gets the observable.
 	 *
 	 * @return the observable
+	 */
+	/**
+	 * @return
 	 */
 	Observable getObservable();
 }

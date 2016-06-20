@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import contract.IMap;
+import map.element.mobile.Lorann;
+import map.element.mobile.Mobile;
+import map.element.motionless.MotionLessElement;
 
 
 public class Map extends Obeservable implements IMap {
@@ -36,7 +39,7 @@ public class Map extends Obeservable implements IMap {
 	}
 	
 	@Override
-	public MotionlessElement getElements(final int x, final int y) {
+	public MotionLessElement getElements(final int x, final int y) {
 		if ((x < 0) || (y < 0) || (x >= this.getWidth()) || (y >= this.getHeight())) {
 			return null;
 		}
@@ -44,7 +47,7 @@ public class Map extends Obeservable implements IMap {
 	}
 
 	@Override
-	public Hero getHero() {
+	public Lorann getLorann() {
 		return this.lorann;
 	}
 
