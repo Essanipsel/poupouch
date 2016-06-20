@@ -1,4 +1,4 @@
-package contract;
+package map;
 
 public enum UserOrder {
 	

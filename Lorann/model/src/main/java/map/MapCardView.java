@@ -1,4 +1,4 @@
-package view;
+package map;
 
 import java.awt.CardLayout;
 

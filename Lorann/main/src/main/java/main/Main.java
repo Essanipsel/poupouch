@@ -2,8 +2,11 @@ package main;
 
 import java.io.IOException;
 
-import contract.*;
+import controller.Controller;
+
 import map.Map;
+import model.Model;
+import view.View;
 
 /**
  * The Class Main.
